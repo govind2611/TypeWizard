@@ -1,3 +1,10 @@
+const neonTheme = {
+  label: "neon",
+  background: "black",
+  textColor: "lime",
+  typeBoxText: "grey",
+};
+
 const darkTheme = {
   label: "dark",
   background: "black",
@@ -40,12 +47,7 @@ const purpleTheme = {
   typeBoxText: "grey",
 };
 
-const neonTheme = {
-  label: "neon",
-  background: "black",
-  textColor: "lime",
-  typeBoxText: "grey",
-};
+
 
 const earthTheme = {
   label: "earth",
@@ -147,6 +149,10 @@ const fledgingTheme = {
 
 export const themeOptions = [
   {
+    label: "neon",
+    value: neonTheme,
+  },
+  {
     label: "fledging",
     value: fledgingTheme,
   },
@@ -174,10 +180,7 @@ export const themeOptions = [
     label: "purple",
     value: purpleTheme,
   },
-  {
-    label: "neon",
-    value: neonTheme,
-  },
+ 
   {
     label: "earth",
     value: earthTheme,
