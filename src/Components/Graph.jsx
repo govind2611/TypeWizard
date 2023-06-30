@@ -11,6 +11,8 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import { useTheme } from "../Context/ThemeContext";
+
+/* registering dependencies */
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -20,6 +22,8 @@ ChartJS.register(
   Tooltip,
   Legend
 );
+
+
 const Graph = ({ graphData }) => {
   const { theme } = useTheme();
 

@@ -22,6 +22,7 @@ const LoginForm = ({handleClose}) => {
         theme: "dark",
       });
     }
+    /* function given by firebase auth */
     auth
       .signInWithEmailAndPassword(email, password)
       .then((res) => {

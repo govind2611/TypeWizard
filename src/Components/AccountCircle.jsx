@@ -34,6 +34,8 @@ const AccountCircle = () => {
   const handleValueChange = (e, v) => {
     setValue(v);
   };
+
+  /* signout function predefined */
   const logout = () => {
     auth
       .signOut()
@@ -67,6 +69,7 @@ const AccountCircle = () => {
       });
   };
 
+  /*signin function predefined  */
   const googleProvider = new GoogleAuthProvider();
   const handleGoogleSignIn = () => {
     signInWithPopup(auth, googleProvider)

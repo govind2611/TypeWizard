@@ -3,9 +3,9 @@ import { Box, TextField, Button } from "@mui/material";
 import { useTheme } from "../Context/ThemeContext";
 import { auth } from "../firebaseConfig";
 import { toast } from "react-toastify";
-import errorMapping from "../Utils/errorMapping"
+import errorMapping from "../Utils/errorMapping";
 
-const SignupForm = ({handleClose}) => {
+const SignupForm = ({ handleClose }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -38,6 +38,7 @@ const SignupForm = ({handleClose}) => {
       });
       return;
     }
+    /* function given by firebase auth */
     auth
       .createUserWithEmailAndPassword(email, password)
       .then((res) => {
@@ -54,7 +55,7 @@ const SignupForm = ({handleClose}) => {
         handleClose();
       })
       .catch((err) => {
-        toast.error(errorMapping[err.code] || 'Unknown error occured', {
+        toast.error(errorMapping[err.code] || "Unknown error occured", {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,

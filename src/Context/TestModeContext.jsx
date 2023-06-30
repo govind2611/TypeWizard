@@ -1,21 +1,22 @@
-import {createContext, useState, useContext} from 'react';
+import { createContext, useState, useContext } from "react";
 
 const TestModeContext = createContext();
 
-export const TestModeContextProvider = ({children}) => {
+// by default property of context --> children
+export const TestModeContextProvider = ({ children }) => {
+  const [testTime, setTestTime] = useState(15);
+  // object to access value fromn anywhere
+  const values = {
+    testTime,
+    setTestTime,
+  };
+  /*wrapped whole app inside provide ---> index.jsx*/
+  return (
+    <TestModeContext.Provider value={values}>
+      {children}
+    </TestModeContext.Provider>
+  );
+};
 
-
-    const [testTime, setTestTime] = useState(15);
-    const values ={
-        testTime,
-        setTestTime
-    } 
-
-    return (
-        <TestModeContext.Provider value={values}>
-        {children}
-        </TestModeContext.Provider>
-    )
-}
-
-export const useTestMode = () => useContext(TestModeContext) ;
+// custom hook to get accesss of the context
+export const useTestMode = () => useContext(TestModeContext);

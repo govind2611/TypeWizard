@@ -255,7 +255,15 @@ body{
     transform: translateY(0);
   }
 }
+.social-link {
+  color: ${({ theme }) => theme.textColor};
+  transition: color 0.25s linear;
+  margin-left: 0.5rem;
+}
 
+.social-link:hover {
+  color: ${({ theme }) => theme.typeBoxText};
+}
   
   
 `;

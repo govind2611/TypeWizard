@@ -13,6 +13,7 @@ const Stats = ({
   extraChars,
   graphData,
 }) => {
+  /* created to hold unique values of graph --> time */
   let timeSet = new Set();
   const newGraph = graphData.filter((i) => {
     if (!timeSet.has(i[0])) {
@@ -21,7 +22,9 @@ const Stats = ({
     }
   });
 
+  /*pushing data to db */
   const pushDataToDB = () => {
+    // hamdeled nan accuracy
     if (isNaN(accuracy)) {
       toast.error(
        "Invalid Test",
@@ -38,8 +41,11 @@ const Stats = ({
         return;
     }
 
+    // reference to database
     const resultsRef = db.collection("Results");
+    // getting useer from auth obj by uid
     const { uid } = auth.currentUser;
+    // adding all the data to db
     resultsRef
       .add({
         wpm: wpm,
@@ -81,9 +87,12 @@ const Stats = ({
   };
 
   useEffect(() => {
+    /* if user is loogged in */
     if (auth.currentUser) {
       pushDataToDB();
-    } else {
+    } 
+    /* if user is not loogged in */
+    else {
       toast.warning("Please login first to save the results.....", {
         position: "top-right",
         autoClose: 5000,

@@ -21,7 +21,7 @@ const Userpage = () => {
     let tempGraphData = [];
 
     resultsRef
-      .where("userId", "==", uid)
+      .where("userId", "==", uid) // checks if user is present or not
       .orderBy("timeStamp", "desc")
       .get()
       .then((snapshot) => {
@@ -39,6 +39,7 @@ const Userpage = () => {
         setDataLoading(false);
       });
   };
+  /*fetching user data when firebase is loaded*/
   useEffect(() => {
     if (!loading) {
       fetchUserData();
