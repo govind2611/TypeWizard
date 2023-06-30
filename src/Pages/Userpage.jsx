@@ -11,7 +11,7 @@ const Userpage = () => {
   const [data, setData] = useState([]);
   const [user, loading] = useAuthState(auth);
   const [graphData, setGraphData] = useState([]);
-  const [dataLoading, setDataLoading]=useState(true)
+  const [dataLoading, setDataLoading] = useState(true);
   const navigate = useNavigate();
 
   const fetchUserData = () => {
@@ -55,7 +55,7 @@ const Userpage = () => {
 
   return (
     <div className="userpage-container">
-      <UserInfo totalTestTaken={data.length}/>
+      <UserInfo totalTestTaken={data.length} />
       <Graph graphData={graphData} />
       <TableUserData data={data} />
     </div>

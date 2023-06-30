@@ -26,19 +26,17 @@ const Stats = ({
   const pushDataToDB = () => {
     // hamdeled nan accuracy
     if (isNaN(accuracy)) {
-      toast.error(
-       "Invalid Test",
-        {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-        });
-        return;
+      toast.error("Invalid Test", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      return;
     }
 
     // reference to database
@@ -90,9 +88,8 @@ const Stats = ({
     /* if user is loogged in */
     if (auth.currentUser) {
       pushDataToDB();
-    } 
+    } else {
     /* if user is not loogged in */
-    else {
       toast.warning("Please login first to save the results.....", {
         position: "top-right",
         autoClose: 5000,
