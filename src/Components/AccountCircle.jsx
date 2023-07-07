@@ -13,6 +13,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 
+
 const AccountCircle = () => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(0);
@@ -102,10 +103,11 @@ const AccountCircle = () => {
         );
       });
   };
+  
   return (
-    <div>
-      <AccountCircleIcon onClick={handleModalOpen} />
-      {user && <LogoutIcon onClick={logout} />}
+    <div >
+      <AccountCircleIcon className="account" onClick={handleModalOpen} />
+      {user && <LogoutIcon className="account" onClick={logout} /> }
 
       <Modal
         open={open}
@@ -149,6 +151,7 @@ const AccountCircle = () => {
           </Box>
         </div>
       </Modal>
+      
     </div>
   );
 };

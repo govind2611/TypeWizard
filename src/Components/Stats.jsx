@@ -3,6 +3,7 @@ import Graph from "./Graph";
 import { auth, db } from "../firebaseConfig";
 import { toast } from "react-toastify";
 import errorMapping from "../Utils/errorMapping";
+// import Leaderboard from "./Leaderboard"
 
 const Stats = ({
   wpm,
@@ -115,6 +116,7 @@ const Stats = ({
           {correctChars}/{incorrectChars}/{missedChars}/{extraChars}
         </div>
       </div>
+      {/* <Leaderboard /> */}
       <div className="right-stats">
         <Graph graphData={newGraph} />
       </div>
@@ -123,3 +125,4 @@ const Stats = ({
 };
 
 export default Stats;
+

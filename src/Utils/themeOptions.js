@@ -38,6 +38,7 @@ const sunsetTheme = {
   background: "orange",
   textColor: "white",
   typeBoxText: "grey",
+  testTime : 90,
 };
 
 const purpleTheme = {

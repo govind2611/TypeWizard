@@ -1,63 +1,109 @@
-import React, { useState } from "react";
-import { Box, TextField, Button } from "@mui/material";
-import { useTheme } from "../Context/ThemeContext";
-import { auth } from "../firebaseConfig";
-import { toast } from "react-toastify";
-import errorMapping from "../Utils/errorMapping"
+import React, { useState } from 'react';
+import { Box, TextField, Button } from '@mui/material';
+import { useTheme } from '../Context/ThemeContext';
+import { auth } from '../firebaseConfig';
+import { toast } from 'react-toastify';
+import errorMapping from '../Utils/errorMapping';
 
-const LoginForm = ({handleClose}) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+const LoginForm = ({ handleClose }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const { theme } = useTheme();
-  const handleSubmit = () => {
+
+  const handleLogin = () => {
     if (!email || !password) {
-      toast.warn("Fill all the details", {
-        position: "top-right",
+      toast.warn('Fill all the details', {
+        position: 'top-right',
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: "dark",
+        theme: 'dark',
       });
+      return;
     }
-    /* function given by firebase auth */
+
     auth
       .signInWithEmailAndPassword(email, password)
       .then((res) => {
-        toast.success("Succesfully Logged in...", {
-          position: "top-right",
+        toast.success('Successfully Logged in...', {
+          position: 'top-right',
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-          theme: "dark",
+          theme: 'dark',
         });
         handleClose();
       })
       .catch((err) => {
-        toast.error(errorMapping[err.code] || 'Unknown error occured', {
-          position: "top-right",
+        toast.error(errorMapping[err.code] || 'Unknown error occurred', {
+          position: 'top-right',
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-          theme: "dark",
+          theme: 'dark',
         });
       });
   };
+
+  const handleForgotPassword = () => {
+    if (!email) {
+      toast.warn('Enter your email address', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark',
+      });
+      return;
+    }
+
+    auth
+      .sendPasswordResetEmail(email)
+      .then(() => {
+        toast.success('Password reset email sent. Please check your inbox.', {
+          position: 'top-right',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'dark',
+        });
+      })
+      .catch((err) => {
+        toast.error(errorMapping[err.code] || 'Unknown error occurred', {
+          position: 'top-right',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'dark',
+        });
+      });
+  };
+
   return (
     <Box
       p={3}
       style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "20px",
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '20px',
       }}
     >
       <TextField
@@ -92,15 +138,25 @@ const LoginForm = ({handleClose}) => {
           },
         }}
       />
+      
       <Button
         variant="contained"
         size="large"
         style={{ backgroundColor: theme.textColor, color: theme.background }}
-        onClick={handleSubmit}
+        onClick={handleLogin}
       >
         Login
+      </Button>
+      <Button
+        variant="text"
+        size="small"
+        style={{ color: theme.textColor }}
+        onClick={handleForgotPassword}
+      >
+        Forgot Password
       </Button>
     </Box>
   );
 };
+
 export default LoginForm;

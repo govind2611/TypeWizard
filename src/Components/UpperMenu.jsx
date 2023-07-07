@@ -1,8 +1,11 @@
 import React from "react";
 import { useTestMode } from '../Context/TestModeContext.jsx'
-
+import {useTheme} from "../Context/ThemeContext"
 const UpperMenu = ({ countDown }) => {
+  
+  const {theme} = useTheme();
   const {setTestTime} = useTestMode();
+
   const updateTime= (e) => {
    setTestTime(Number(e.target.id))
   }
@@ -22,6 +25,12 @@ const UpperMenu = ({ countDown }) => {
         <div className="time-mode" id={60} onClick={updateTime}>
           60s
         </div>
+       {
+        theme.label === "sunset" ? (
+        <div className="time-mode" id={90} onClick={updateTime}>
+          90s
+        </div> ): null
+       } 
       </div>
     </div>
   );

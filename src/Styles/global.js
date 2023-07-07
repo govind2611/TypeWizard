@@ -144,6 +144,7 @@ body{
     display:flex;
     flex-direction:column;
     align-items:center;
+    cursor:pointer;
    
 }
 .userpage-container {
@@ -265,5 +266,8 @@ body{
   color: ${({ theme }) => theme.typeBoxText};
 }
   
+.account{
+  cursor:pointer;
+}
   
 `;
